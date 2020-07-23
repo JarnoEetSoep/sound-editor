@@ -1,3 +1,10 @@
 {
-    "icon": "assets/img/icon.png"
+    "icon": "assets/img/icon.png",
+    "lang": "assets/lang/en-us.json",
+    "supported_extensions": [
+        ".mkv",
+        ".wav",
+        ".mp3",
+        ".ogg"
+    ]
 }

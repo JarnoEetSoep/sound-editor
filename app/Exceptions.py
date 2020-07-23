@@ -17,3 +17,7 @@ class TooManyKeysWereFoundException(Exception):
 class ConfigurationAlreadyExists(Exception):
     """Raised when the configuration file that you want to create already exists"""
     pass
+
+class SaveFileError(Exception):
+    """Raised when the current file could not be saved"""
+    pass

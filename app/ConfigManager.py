@@ -4,13 +4,14 @@ import os
 import Exceptions as e
 
 class ConfigManager:
+    """Class for managing your configuration files"""
     @staticmethod
     def create(path: str, initial: dict) -> 'ConfigManager':
         """Create a new configuration file"""
         try:
             open(path, 'r', encoding='UTF-8').close()
         except FileNotFoundError:
-            with open(path, 'w', encoding="utf-8") as config:
+            with open(path, 'w', encoding='utf-8') as config:
                 config.write(json.dumps(initial, indent=4))
                 config.close()
             
@@ -49,12 +50,15 @@ class ConfigManager:
         """Get the configuration to read stuff from it"""
         return self.config
     
-    def setConfig(self, config: dict):
+    def setConfig(self, config: dict) -> 'ConfigManager':
         """Set the configuration, e.g. after making some changes to the original one"""
         self.config = config
+        return self
     
-    def save(self):
+    def save(self) -> 'ConfigManager':
         """Save the configuration to its file"""
-        with open(self.path, 'w', encoding="utf-8") as config:
+        with open(self.path, 'w', encoding='utf-8') as config:
             config.write(json.dumps(self.config, indent=4))
             config.close()
+        
+        return self
