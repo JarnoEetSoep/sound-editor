@@ -3,6 +3,9 @@ import os
 
 from Application import Application
 
+if not os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/tmp')):
+    os.makedirs(os.path.realpath(os.path.dirname(__file__) + '/tmp'))
+
 root = tk.Tk()
 
 root.resizable(1, 1)
