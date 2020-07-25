@@ -34,7 +34,7 @@ class Application(tk.Frame):
         
         self.current_file = {}
         self.file = None
-        self.progress = True
+        self.progress = False
 
         self.createWidgets()
 
@@ -176,7 +176,7 @@ class Application(tk.Frame):
     
     def help(self, evt: tk.Event=None):
         """Opens the manual"""
-        webbrowser.open_new('file:///' + os.path.realpath(os.path.join(os.path.dirname(__file__), '../docs/index.html')))
+        webbrowser.open_new('file:///' + os.path.realpath(os.path.join(os.path.dirname(__file__), '../docs/docs-page.html')))
 
     def undo(self, evt: tk.Event=None):
         """Undoes last action"""

@@ -1,5 +1,5 @@
 {
-    "icon": "assets/img/icon.png",
+    "icon": "assets/img/favicon.ico",
     "lang": "assets/lang/en-us.json",
     "supported_extensions": [
         ".mkv",
