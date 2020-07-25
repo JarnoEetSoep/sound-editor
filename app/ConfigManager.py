@@ -62,3 +62,11 @@ class ConfigManager:
             config.close()
         
         return self
+    
+    def getLang(self) -> dict:
+        """Returns the current language file's contents (JSON)"""
+        with open(os.path.realpath(os.path.dirname(__file__) + '/../' + self.config['lang']), 'r', encoding='UTF-8') as lang:
+            language = json.loads(lang.read())
+            lang.close()
+        
+        return language

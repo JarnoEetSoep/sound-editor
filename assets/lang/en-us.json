@@ -1,1 +1,6 @@
-{}
+{
+    "discardChanges": {
+        "title": "Discard Changes?",
+        "message": "You have made some unsaved changes. Would you like to discard these changes?"
+    }
+}

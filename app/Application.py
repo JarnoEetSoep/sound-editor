@@ -11,7 +11,6 @@ import os
 from ConfigManager import ConfigManager
 from SettingsDialog import SettingsDialog
 import Exceptions as e
-from Thread import Thread
 
 ExpectedConfigKeys = {'icon','lang','supported_extensions'}
 
@@ -35,7 +34,7 @@ class Application(tk.Frame):
         
         self.current_file = {}
         self.file = None
-        self.progress = False
+        self.progress = True
 
         self.createWidgets()
 
@@ -59,7 +58,8 @@ class Application(tk.Frame):
         self.menu_file.add_command(label='Save File As...', accelerator='Ctrl+Shift+S', command=self.saveFileAs)
         self.master.bind_all('<Control-S>', self.saveFileAs)
         self.menu_file.add_separator()
-        self.menu_file.add_command(label='Settings', command=self.openSettings)
+        self.menu_file.add_command(label='Settings', accelerator='Ctrl+,', command=self.openSettings)
+        self.master.bind_all('<Control-comma>', self.openSettings)
 
         self.menu_edit = tk.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label='Edit', menu=self.menu_edit)
@@ -79,15 +79,18 @@ class Application(tk.Frame):
     
     def quit(self, evt: tk.Event=None):
         """Kills the window and all of its subprocesses"""
-        # self.threads.kill()
+        if self.progress:
+            if not messagebox.askokcancel(self.configuration.getLang()['discardChanges']['title'], self.configuration.getLang()['discardChanges']['message']):
+                return
+
         if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav')):
-                os.remove(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'))
+            os.remove(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'))
 
         self.master.destroy()
     
     def newFile(self, evt: tk.Event=None):
         """Creates a new file"""
-        proceed = messagebox.askokcancel('Create New File', 'There is unsaved progress. Do you want to discard it?') if self.progress else True
+        proceed = messagebox.askokcancel(self.configuration.getLang()['discardChanges']['title'], self.configuration.getLang()['discardChanges']['message']) if self.progress else True
         if not proceed: return
         
         if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav')):
@@ -98,7 +101,7 @@ class Application(tk.Frame):
 
     def openFile(self, evt: tk.Event=None):
         """Open a sound file"""
-        proceed = messagebox.askokcancel('Create New File', 'There is unsaved progress. Do you want to discard it?') if self.progress else True
+        proceed = messagebox.askokcancel(self.configuration.getLang()['discardChanges']['title'], self.configuration.getLang()['discardChanges']['message']) if self.progress else True
         if not proceed: return
 
         path = filedialog.askopenfilename(initialdir=os.path.expanduser('~'), title='Open Sound File', filetypes=[('Sound files', ' '.join(self.configuration.getConfig()['supported_extensions']))])
@@ -166,9 +169,10 @@ class Application(tk.Frame):
             self.master.wm_title(f'Sound Editor - {os.path.basename(path)}')
             self.progress = False
 
-    def openSettings(self):
+    def openSettings(self, evt: tk.Event=None):
         """Opens the settings dialog"""
-        self.settings_dialog.show()
+        if not self.settings_dialog.isVisible:
+            self.settings_dialog.show()
     
     def help(self, evt: tk.Event=None):
         """Opens the manual"""
