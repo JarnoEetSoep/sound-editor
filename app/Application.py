@@ -83,8 +83,8 @@ class Application(tk.Frame):
             if not messagebox.askokcancel(self.configuration.getLang()['discardChanges']['title'], self.configuration.getLang()['discardChanges']['message']):
                 return
 
-        if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav')):
-            os.remove(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'))
+        if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav')):
+            os.remove(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'))
 
         self.master.destroy()
     
@@ -93,8 +93,8 @@ class Application(tk.Frame):
         proceed = messagebox.askokcancel(self.configuration.getLang()['discardChanges']['title'], self.configuration.getLang()['discardChanges']['message']) if self.progress else True
         if not proceed: return
         
-        if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav')):
-            os.remove(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'))
+        if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav')):
+            os.remove(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'))
         
         self.current_file = {}
         self.master.wm_title('Sound Editor')
@@ -110,13 +110,13 @@ class Application(tk.Frame):
             path = os.path.realpath(path)
             self.current_file['path'] = path
 
-            if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav')):
-                os.remove(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'))
+            if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav')):
+                os.remove(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'))
 
-            os.system(f'ffmpeg -y -loglevel quiet -i {path} {os.path.realpath(os.path.dirname(__file__) + "/data/current.wav")}')
+            os.system(f'ffmpeg -y -loglevel quiet -i {path} {os.path.realpath(os.path.dirname(__file__) + "/tmp/current.wav")}')
 
             try:
-                self.current_file['rate'], self.current_file['data'] = wavfile.read(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'))
+                self.current_file['rate'], self.current_file['data'] = wavfile.read(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'))
             except FileNotFoundError:
                 self.current_file = {}
                 print('Sound file is corrupt or could not be opened')
@@ -132,9 +132,9 @@ class Application(tk.Frame):
     def saveFile(self, evt: tk.Event=None):
         """Save the current sound file"""
         if 'path' in self.current_file.keys():
-            wavfile.write(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'), self.current_file['rate'], self.current_file['data'])
+            wavfile.write(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), self.current_file['rate'], self.current_file['data'])
 
-            savestate = os.system(f'ffmpeg -y -loglevel quiet -i {os.path.realpath(os.path.dirname(__file__) + "/data/current.wav")} {self.current_file["path"]}')
+            savestate = os.system(f'ffmpeg -y -loglevel quiet -i {os.path.realpath(os.path.dirname(__file__) + "/tmp/current.wav")} {self.current_file["path"]}')
             if savestate == 1:
                 raise e.SaveFileError
                 
@@ -160,8 +160,8 @@ class Application(tk.Frame):
                 self.current_file['rate'] = 44100
                 self.current_file['data'] = np.array([[0, 0]] * 1)
 
-            wavfile.write(os.path.realpath(os.path.dirname(__file__) + '/data/current.wav'), self.current_file['rate'], self.current_file['data'])
-            savestate = os.system(f'ffmpeg -y -loglevel quiet -i {os.path.realpath(os.path.dirname(__file__) + "/data/current.wav")} {self.current_file["path"]}')
+            wavfile.write(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), self.current_file['rate'], self.current_file['data'])
+            savestate = os.system(f'ffmpeg -y -loglevel quiet -i {os.path.realpath(os.path.dirname(__file__) + "/tmp/current.wav")} {self.current_file["path"]}')
 
             if savestate == 1:
                 raise e.SaveFileError

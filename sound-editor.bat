@@ -1,0 +1,2 @@
+start pyw app
+exit

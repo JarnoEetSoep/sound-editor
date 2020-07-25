@@ -12,7 +12,7 @@ class SettingsDialog:
         """Configure a new settings window"""
         self.app = master
         self.config = config
-        self.changes = True
+        self.changes = False
         self.isVisible = False
 
     def close(self, evt: tk.Event=None):
