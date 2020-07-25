@@ -6,7 +6,7 @@ Using this application, you will be able to edit your audio files.
 
 ## Installation
 
-#### Prerequisities
+#### Prerequisites
 program | url
 ------- | ---
 Python 3(.7.4) | https://www.python.org/downloads/
