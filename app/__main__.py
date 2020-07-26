@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter import messagebox
+from subprocess import run
 import os
 
 from Application import Application
@@ -16,5 +18,11 @@ root.geometry('950x700+50+50')
 root.title('Sound Editor')
 
 app = Application(master=root)
+
+try:
+    run('ffmpeg -loglevel quiet')
+except FileNotFoundError:
+    messagebox.showerror('Fatal', 'FFmpeg is not installed! Please have a look at the installation section in the docs (https://jarnoeetsoep.github.io/sound-editor/docs-page.html#introduction)')
+    exit()
 
 app.mainloop()
