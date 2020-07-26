@@ -1,4 +1,4 @@
-# Python 3 Sound Editor v0.0.0
+# Python 3 Sound Editor v0.0.0+3.7.4
 For a more detailed documentation please visit https://jarnoeetsoep.github.io/sound-editor.
 
 ## What is this?
