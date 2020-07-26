@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
+from subprocess import STDOUT, PIPE, run
 import webbrowser
 from scipy.io import wavfile
 import numpy as np
@@ -39,6 +40,7 @@ class Application(tk.Frame):
         self.createWidgets()
 
         self.master.update()
+        self.focus_set()
 
     def createWidgets(self):
         """Creates all widgets in the window"""
@@ -113,7 +115,13 @@ class Application(tk.Frame):
             if os.path.exists(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav')):
                 os.remove(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'))
 
-            os.system(f'ffmpeg -y -loglevel quiet -i {path} {os.path.realpath(os.path.dirname(__file__) + "/tmp/current.wav")}')
+            ffmpeg = run(['ffmpeg', '-y', '-loglevel', 'error', '-i', path, os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav')], stdout=PIPE, stderr=STDOUT)
+
+
+            if ffmpeg.returncode == 1:
+                self.current_file = {}
+                messagebox.showerror('Error', f'Could not open \'{path}\', because the file is possibly corrupt:\n\n{ffmpeg.stdout.decode()}')
+                return
 
             try:
                 self.current_file['rate'], self.current_file['data'] = wavfile.read(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'))
@@ -134,9 +142,11 @@ class Application(tk.Frame):
         if 'path' in self.current_file.keys():
             wavfile.write(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), self.current_file['rate'], self.current_file['data'])
 
-            savestate = os.system(f'ffmpeg -y -loglevel quiet -i {os.path.realpath(os.path.dirname(__file__) + "/tmp/current.wav")} {self.current_file["path"]}')
-            if savestate == 1:
-                raise e.SaveFileError
+            ffmpeg = run(['ffmpeg', '-y', '-loglevel', 'error', '-i', os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), self.current_file['path']], stdout=PIPE, stderr=STDOUT)
+
+            if ffmpeg.returncode == 1:
+                messagebox.showerror('Error', f'Could not save file to \'{path}\':\n\n{ffmpeg.stdout.decode()}')
+                return
                 
             self.master.wm_title(f'Sound Editor - {os.path.basename(self.current_file["path"])}')
             self.progress = False
@@ -154,17 +164,18 @@ class Application(tk.Frame):
 
             if not True in valid_extension: path += '.mp3'
 
-            self.current_file['path'] = path
-
             if not 'data' in self.current_file:
                 self.current_file['rate'] = 44100
                 self.current_file['data'] = np.array([[0, 0]] * 1)
 
             wavfile.write(os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), self.current_file['rate'], self.current_file['data'])
-            savestate = os.system(f'ffmpeg -y -loglevel quiet -i {os.path.realpath(os.path.dirname(__file__) + "/tmp/current.wav")} {self.current_file["path"]}')
+            ffmpeg = run(['ffmpeg', '-y', '-loglevel', 'error', '-i', os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), path], stdout=PIPE, stderr=STDOUT)
 
-            if savestate == 1:
-                raise e.SaveFileError
+            if ffmpeg.returncode == 1:
+                messagebox.showerror('Error', f'Could not save file to \'{path}\':\n\n{ffmpeg.stdout.decode()}')
+                return
+
+            self.current_file['path'] = path
                 
             self.master.wm_title(f'Sound Editor - {os.path.basename(path)}')
             self.progress = False
