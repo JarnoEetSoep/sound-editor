@@ -5,8 +5,6 @@ from subprocess import STDOUT, PIPE, run
 import webbrowser
 from scipy.io import wavfile
 import numpy as np
-import json
-import time
 import os
 
 from ConfigManager import ConfigManager

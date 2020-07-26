@@ -2,9 +2,9 @@
     "icon": "assets/img/favicon.ico",
     "lang": "assets/lang/en-us.json",
     "supported_extensions": [
-        ".mkv",
-        ".wav",
         ".mp3",
+        ".wav",
+        ".mkv",
         ".ogg"
     ]
 }
