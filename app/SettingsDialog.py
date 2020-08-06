@@ -15,6 +15,11 @@ class SettingsDialog:
         self.changes = False
         self.isVisible = False
 
+        self.languages = {
+            'English': 'assets/lang/en-us.json',
+            'Nederlands': 'assets/lang/nl-nl.json'
+        }
+
     def close(self, evt: tk.Event=None):
         """Close settings window"""
         self.isVisible = False
@@ -34,21 +39,30 @@ class SettingsDialog:
         self.style.configure('.', font=('verdana', 10))
         self.style.configure('lefttab.TNotebook', tabposition='wn')
         self.style.layout('Tab', [('Notebook.tab', {'sticky': 'nswe', 'children': [('Notebook.padding', {'side': 'top', 'sticky': 'nswe', 'children': [('Notebook.label', {'side': 'top', 'sticky': ''})]})]})])
+        self.dialog.option_add('*TCombobox*Listbox.font', ('verdana', 10))
 
         self.notebook = ttk.Notebook(self.container, style='lefttab.TNotebook')
         self.notebook.pack(fill=tk.X, expand=1, anchor=tk.N)
 
-        self.tab_example1 = tk.Frame(self.notebook)
-        self.tab_example2 = tk.Frame(self.notebook)
+        self.tab_preferences = tk.Frame(self.notebook)
 
-        self.notebook.add(self.tab_example1, text='Example 1')
-        self.notebook.add(self.tab_example2, text='Example 2')
+        self.notebook.add(self.tab_preferences, text=self.config.getLang()['settings']['preferences'])
+
+        # Preferences tab
+        self.language_label = tk.Label(self.tab_preferences, text=self.config.getLang()['settings']['languagelabel'], font=('Verdana', 10))
+
+        langs = ['English', 'Nederlands']
+        self.language_input = ttk.Combobox(self.tab_preferences, values=langs, font=('Verdana', 10), state='readonly')
+        self.language_input.current(langs.index({path: lang for lang, path in self.languages.items()}[self.config.getConfig()['lang']]))
+
+        self.language_label.grid(row = 0, column = 0)
+        self.language_input.grid(row = 0, column = 1)
 
         # Apply button
         self.cancel_apply_group = tk.Frame(self.container)
-        self.cancel_button = ttk.Button(self.cancel_apply_group, text='Cancel', command=self.cancel)
-        self.apply_button = ttk.Button(self.cancel_apply_group, text='Apply', command=self.apply)
-        self.apply_and_close_button = ttk.Button(self.cancel_apply_group, text='Apply and Close', command=lambda: self.apply(close=True))
+        self.cancel_button = ttk.Button(self.cancel_apply_group, text=self.config.getLang()['settings']['cancel'], command=self.cancel)
+        self.apply_button = ttk.Button(self.cancel_apply_group, text=self.config.getLang()['settings']['apply'], command=self.apply)
+        self.apply_and_close_button = ttk.Button(self.cancel_apply_group, text=self.config.getLang()['settings']['applyandclose'], command=lambda: self.apply(close=True))
 
         self.cancel_apply_group.pack(fill=tk.Y, expand=1, anchor=tk.E)
         self.cancel_button.grid(row=0, column=0)
@@ -60,7 +74,7 @@ class SettingsDialog:
         self.dialog.grab_set()
         self.dialog.focus_set()
         self.dialog.transient(self.dialog.master)
-        self.dialog.title('Settings')
+        self.dialog.title(self.config.getLang()['settings']['title'])
         self.dialog.protocol('WM_DELETE_WINDOW', self.cancel)
 
         self.dialog.wm_deiconify()
@@ -68,7 +82,11 @@ class SettingsDialog:
     
     def apply(self, close: bool=False):
         """Apply changes"""
-        self.config.setConfig({}).save()
+        newConfig = self.config.getConfig()
+
+        newConfig['lang'] = self.languages[self.language_input.get()]
+
+        self.config.setConfig(newConfig).save()
         
         if close: self.close()
     

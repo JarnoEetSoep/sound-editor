@@ -2,5 +2,26 @@
     "discardChanges": {
         "title": "Discard Changes?",
         "message": "You have made some unsaved changes. Would you like to discard these changes?"
+    },
+    "topmenu": {
+        "file": "File",
+        "newfile": "New File",
+        "openfile": "Open File...",
+        "savefile": "Save File",
+        "savefileas": "Save File As...",
+        "settings": "Settings",
+        "edit": "Edit",
+        "undo": "Undo",
+        "redo": "Redo",
+        "help": "Help",
+        "manual": "Manual"
+    },
+    "settings": {
+        "title": "Settings",
+        "preferences": "Preferences",
+        "applyandclose": "Apply and Close",
+        "apply": "Apply",
+        "cancel": "Close",
+        "languagelabel": "Language: "
     }
 }

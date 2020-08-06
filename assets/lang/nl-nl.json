@@ -1,0 +1,27 @@
+{
+    "discardChanges": {
+        "title": "Wijzigingen weggooien?",
+        "message": "U heeft een aantal wijzigingen gemaakt. Wilt u deze wijzigingen weggooien?"
+    },
+    "topmenu": {
+        "file": "Bestand",
+        "newfile": "Nieuw",
+        "openfile": "Open...",
+        "savefile": "Opslaan",
+        "savefileas": "Opslaan Als...",
+        "settings": "Instellingen",
+        "edit": "Bewerken",
+        "undo": "Ongedaan Maken",
+        "redo": "Opnieuw Uitvoeren",
+        "help": "Help",
+        "manual": "Handleiding"
+    },
+    "settings": {
+        "title": "Instellingen",
+        "preferences": "Voorkeuren",
+        "applyandclose": "Toepassen en Sluiten",
+        "apply": "Toepassen",
+        "cancel": "Sluiten",
+        "languagelabel": "Taal: "
+    }
+}
