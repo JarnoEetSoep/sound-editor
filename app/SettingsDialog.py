@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
+from copy import deepcopy
 import json
 import os
 
@@ -12,7 +13,6 @@ class SettingsDialog:
         """Configure a new settings window"""
         self.app = master
         self.config = config
-        self.changes = False
         self.isVisible = False
 
         self.languages = {
@@ -76,15 +76,14 @@ class SettingsDialog:
         self.dialog.transient(self.dialog.master)
         self.dialog.title(self.config.getLang()['settings']['title'])
         self.dialog.protocol('WM_DELETE_WINDOW', self.cancel)
+        self.dialog.tk.call('wm', 'iconphoto', self.dialog._w, ImageTk.PhotoImage(Image.open(os.path.realpath(os.path.dirname(__file__) + '/../' + self.config.getConfig()['icon']))))
 
         self.dialog.wm_deiconify()
         self.dialog.geometry(f'550x300+{self.dialog.master.master.winfo_x() + self.dialog.master.master.winfo_width() // 2 - 275}+{self.dialog.master.master.winfo_y() + self.dialog.master.master.winfo_height() // 2 - 150}')
     
     def apply(self, close: bool=False):
         """Apply changes"""
-        newConfig = self.config.getConfig()
-
-        newConfig['lang'] = self.languages[self.language_input.get()]
+        newConfig = self.parseConfig()
 
         self.config.setConfig(newConfig).save()
         
@@ -92,7 +91,7 @@ class SettingsDialog:
     
     def cancel(self):
         """Discard changes"""
-        if self.changes:
+        if self.parseConfig() != self.config.getConfig():
             if messagebox.askokcancel(self.config.getLang()['discardChanges']['title'], self.config.getLang()['discardChanges']['message']):
                 self.close()
         else:
@@ -101,3 +100,9 @@ class SettingsDialog:
     def resize(self, evt: tk.Event):
         """Called when the window is being resized"""
         self.notebook.configure(height=evt.height-30)
+    
+    def parseConfig(self):
+        """Parse the inputs into a valid JSON format"""
+        config = deepcopy(self.config.getConfig())
+        config['lang'] = self.languages[self.language_input.get()]
+        return config

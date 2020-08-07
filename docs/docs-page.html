@@ -1,197 +1,193 @@
 <!DOCTYPE html>
 <html lang="en"> 
-<head>
-    <title>Documentation for Sound Editor</title>
-    
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="Documentation for Sound Editor">
-    <meta name="author" content="Xiaoying Riley, Jargneau">    
-    <link rel="shortcut icon" href="favicon.ico"> 
-    
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome JS-->
-    <script defer src="assets/fontawesome/js/all.min.js"></script>
-    
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <head>
+        <title>Documentation for Sound Editor</title>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Documentation for Sound Editor">
+        <meta name="author" content="Xiaoying Riley, Jargneau">    
+        <link rel="shortcut icon" href="favicon.ico"> 
 
-    <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
-
-</head> 
-
-<body class="docs-page">    
-    <header class="header fixed-top">        
-        <div class="branding docs-branding">
-            <div class="container-fluid position-relative py-2">
-                <div class="docs-logo-wrapper">
-                    <button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible mr-2 d-xl-none" type="button">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" src="assets/images/logo.svg" alt="logo"><span class="logo-text">Sound<span class="text-alt">Editor</span></span></a></div>    
-                </div><!--//docs-logo-wrapper-->
-                <div class="docs-top-utilities d-flex justify-content-end align-items-center">
-                    <div class="top-search-box d-none d-lg-flex">
-                        <form class="search-form">
-                            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
-                            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-                        </form>
-                    </div>
-    
-                    <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-                        <li class="list-inline-item"><a href="https://github.com/jarnoeetsoep/sound-editor"><i class="fab fa-github fa-fw"></i></a></li>
-                    </ul><!--//social-list-->
-                    <a href="https://github.com/JarnoEetSoep/sound-editor/releases" class="btn btn-primary d-none d-lg-flex">Download</a>
-                </div><!--//docs-top-utilities-->
-            </div><!--//container-->
-        </div><!--//branding-->
-    </header><!--//header-->
-    
-    <div class="docs-wrapper">
-        <div id="docs-sidebar" class="docs-sidebar">
-            <div class="top-search-box d-lg-none p-3">
-                <form class="search-form">
-                    <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
-                    <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
-            <nav id="docs-nav" class="docs-nav navbar">
-                <ul class="section-items list-unstyled nav flex-column pb-3">
-                    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#introduction"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Introduction</a></li>
-                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#installation"><span class="theme-icon-holder mr-2"><i class="fas fa-arrow-down"></i></span>Installation</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#download">Download and install</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#start">Start</a></li>
-                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#manual"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Manual</a></li>
-                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#technical"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Technical Details</a></li>
-                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#developers"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Developers</a></li>
-                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#faq"><span class="theme-icon-holder mr-2"><i class="fas fa-lightbulb"></i></span>FAQs</a></li>
-                </ul>
-
-            </nav><!--//docs-nav-->
-        </div><!--//docs-sidebar-->
-        <div class="docs-content">
-            <div class="container">
-                <article class="docs-article" id="introduction">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">Introduction<span class="docs-time">Last updated: 2020-07-26</span></h1>
-                        <section class="docs-intro">
-                            <p>Using this sound editor, you&#39;ll be able to create anything with sound.</p>
-                        </section><!--//docs-intro-->
-                    
-                </article>
-                
-                <article class="docs-article" id="installation">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">Installation</h1>
-                        <section class="docs-intro">
-                            <p>Now that you know what exactly this sound editor is, let&#39;s download and install it! First of all, please make sure you have the following on your machine:</p>
-                            <div class="table-responsive my-4">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Prerequisite</th>
-                                            <th scope="col">Download link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Python 3(.7.4)</td>
-                                            <td><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>FFmpeg</td>
-                                            <td><a href="https://ffmpeg.org/download.html">https://ffmpeg.org/download.html</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div><!--//table-responsive-->
-                        </section><!--//docs-intro-->
-                    </header>
-                     <section class="docs-section" id="download">
-                        <h2 class="section-heading">Download and install</h2>
-                        <p>You can download the latest release of this sound editor <a href="https://github.com/JarnoEetSoep/sound-editor/releases">here</a> and then unzip the <code>.zip</code> file. Now navigate through a command prompt (eg. terminal, cmd.exe) to the brand new <code>sound-editor/</code> folder, where you execute <code>py -m pip install -r requirements.txt</code> on a Windows machine, or <code>pip3 install -r requirements.txt</code> on Linux or Apple.</p>
-                    </section><!--//section-->
-                    
-                    <section class="docs-section" id="start">
-                        <h2 class="section-heading">Start</h2>
-                        <p>Now you can start the sound editor by either starting <code>sound-editor.bat</code> (Windows) or <code>sound-editor.sh</code> (Linux or Apple). Happy editing!</p>
-                    </section><!--//section-->
-                </article><!--//docs-article-->
-                    
-                <article class="docs-article" id="manual">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">Manual</h1>
-                        <section class="docs-intro">
-                            <p>Currently, there is not that much what you can do with the sound editor.</p>
-                        </section><!--//docs-intro-->
-                    </header>
-                </article><!--//docs-article-->
-                
-                <article class="docs-article" id="technical">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">Technical Details</h1>
-                        <section class="docs-intro">
-                            <p>Technical details will be placed here.</p>
-                        </section><!--//docs-intro-->
-                    </header>
-                </article><!--//docs-article-->
-                
-                <article class="docs-article" id="developers">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">Developers</h1>
-                        <section class="docs-intro">
-                            <p>No content yet.</p>
-                        </section><!--//docs-intro-->
-                    </header>
-                </article><!--//docs-article-->
-                
-                <article class="docs-article" id="faq">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">FAQs</h1>
-                        <section class="docs-intro">
-                            <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>No questions have been asked yet...</h5>
-                            <p>...so I can&#39;t give answers.</p>
-                        </section><!--//docs-intro-->
-                    </header>
-                
-                </article><!--//docs-article-->
-
-                <footer class="footer">
-                    <div class="container text-center py-5">
-                        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-                        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small><br>
-                        <small class="copyright">Icon made by <a class="theme-link" href="https://www.flaticon.com/authors/becris" target="_blank">Becris</a> from <a class="theme-link" href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></small>
-                        <ul class="social-list list-unstyled pt-4 mb-0">
-                            <li class="list-inline-item"><a href="https://github.com/jarnoeetsoep/sound-editor"><i class="fab fa-github fa-fw"></i></a></li> 
+        <script defer src="assets/fontawesome/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" />
+        <link id="theme-style" rel="stylesheet" href="assets/css/theme.css" />
+    </head> 
+    <body class="docs-page">    
+        <header class="header fixed-top">        
+            <div class="branding docs-branding">
+                <div class="container-fluid position-relative py-2">
+                    <div class="docs-logo-wrapper">
+                        <button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible mr-2 d-xl-none" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" src="assets/images/logo.svg" alt="logo"><span class="logo-text">Sound<span class="text-alt">Editor</span></span></a></div>    
+                    </div><!--//docs-logo-wrapper-->
+                    <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+                        <div class="top-search-box d-none d-lg-flex">
+                            <form class="search-form">
+                                <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+                                <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+        
+                        <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+                            <li class="list-inline-item"><a href="https://github.com/jarnoeetsoep/sound-editor"><i class="fab fa-github fa-fw"></i></a></li>
                         </ul><!--//social-list-->
-                    </div>
-                </footer>
-            </div> 
-        </div>
-    </div><!--//docs-wrapper-->
-    
-   
-       
-    <!-- Javascript -->          
-    <script src="assets/plugins/jquery-3.4.1.min.js"></script>
-    <script src="assets/plugins/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
-    
-    
-    <!-- Page Specific JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
-    <script src="assets/js/highlight-custom.js"></script> 
-    <script src="assets/plugins/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/docs.js"></script> 
+                        <a href="https://github.com/JarnoEetSoep/sound-editor/releases" class="btn btn-primary d-none d-lg-flex">Download</a>
+                    </div><!--//docs-top-utilities-->
+                </div><!--//container-->
+            </div><!--//branding-->
+        </header><!--//header-->
+        
+        <div class="docs-wrapper">
+            <div id="docs-sidebar" class="docs-sidebar">
+                <div class="top-search-box d-lg-none p-3">
+                    <form class="search-form">
+                        <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+                        <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <nav id="docs-nav" class="docs-nav navbar">
+                    <ul class="section-items list-unstyled nav flex-column pb-3">
+                        <li class="nav-item section-title"><a class="nav-link scrollto active" href="#introduction"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Introduction</a></li>
+                        <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#installation"><span class="theme-icon-holder mr-2"><i class="fas fa-arrow-down"></i></span>Installation</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#download">Download and install</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#start">Start</a></li>
+                        <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#manual"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Manual</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#settings">Settings</a></li>
+                        <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#technical"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Technical Details</a></li>
+                        <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#developers"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Developers</a></li>
+                        <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#faq"><span class="theme-icon-holder mr-2"><i class="fas fa-lightbulb"></i></span>FAQs</a></li>
+                    </ul>
 
-</body>
+                </nav><!--//docs-nav-->
+            </div><!--//docs-sidebar-->
+            <div class="docs-content">
+                <div class="container">
+                    <article class="docs-article" id="introduction">
+                        <header class="docs-header">
+                            <h1 class="docs-heading">Introduction<span class="docs-time">Last updated: 2020-07-26</span></h1>
+                            <section class="docs-intro">
+                                <p>Using this sound editor, you&#39;ll be able to create anything with sound.</p>
+                            </section><!--//docs-intro-->
+                        
+                    </article>
+                    
+                    <article class="docs-article" id="installation">
+                        <header class="docs-header">
+                            <h1 class="docs-heading">Installation</h1>
+                            <section class="docs-intro">
+                                <p>Now that you know what exactly this sound editor is, let&#39;s download and install it! First of all, please make sure you have the following on your machine:</p>
+                                <div class="table-responsive my-4">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Prerequisite</th>
+                                                <th scope="col">Download link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Python 3(.7.4)</td>
+                                                <td><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>FFmpeg</td>
+                                                <td><a href="https://ffmpeg.org/download.html">https://ffmpeg.org/download.html</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </section><!--//docs-intro-->
+                        </header>
+                        <section class="docs-section" id="download">
+                            <h2 class="section-heading">Download and install</h2>
+                            <p>You can download the latest release of this sound editor <a href="https://github.com/JarnoEetSoep/sound-editor/releases">here</a> and then unzip the <code>.zip</code> file. Now navigate through a command prompt (eg. terminal, cmd.exe) to the brand new <code>sound-editor/</code> folder, where you execute <code>py -m pip install -r requirements.txt</code> on a Windows machine, or <code>pip3 install -r requirements.txt</code> on Linux or Apple.</p>
+                        </section><!--//section-->
+                        
+                        <section class="docs-section" id="start">
+                            <h2 class="section-heading">Start</h2>
+                            <p>Now you can start the sound editor by either starting <code>sound-editor.bat</code> (Windows) or <code>sound-editor.sh</code> (Linux or Apple). Happy editing!</p>
+                        </section><!--//section-->
+                    </article><!--//docs-article-->
+                        
+                    <article class="docs-article" id="manual">
+                        <header class="docs-header">
+                            <h1 class="docs-heading">Manual</h1>
+                            <section class="docs-intro">
+                                <p>Currently, there is not that much what you can do with the sound editor, but here you will find everything that you can do with the editor.</p>
+                            </section><!--//docs-intro-->
+                        </header>
+                        <section class="docs-section" id="settings">
+                            <h2 class="section-heading">Settings</h2>
+                            <p>You can open the settings window by left clicking 'File' and then 'Settings' in the top menu, or alternatively, press Ctrl+Comma. That will open a window that looks like this (Windows 10, on other OSes it might look different):</p>
+                            <img src="assets/images/settings-window.png" />
+                            <p>Right now, the only option you can change is the language. The current languages you can pick, are English and Dutch (Nederlands). When you are done changing things, you can click:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">'Apply and Change' to apply the changes you made and close the settings window</li>
+                                <li class="list-group-item">'apply' to just apply the changes you made, without closing the window</li>
+                                <li class="list-group-item">'close' to close the settings window and discard any changes made. If there are any unapplied changes, you will be asked if you are sure you want to discard the changes.</li>
+                            </ul>
+                        </section><!--//section-->
+                    </article><!--//docs-article-->
+                    
+                    <article class="docs-article" id="technical">
+                        <header class="docs-header">
+                            <h1 class="docs-heading">Technical Details</h1>
+                            <section class="docs-intro">
+                                <p>Technical details will be placed here.</p>
+                            </section><!--//docs-intro-->
+                        </header>
+                    </article><!--//docs-article-->
+                    
+                    <article class="docs-article" id="developers">
+                        <header class="docs-header">
+                            <h1 class="docs-heading">Developers</h1>
+                            <section class="docs-intro">
+                                <p>No content yet.</p>
+                            </section><!--//docs-intro-->
+                        </header>
+                    </article><!--//docs-article-->
+                    
+                    <article class="docs-article" id="faq">
+                        <header class="docs-header">
+                            <h1 class="docs-heading">FAQs</h1>
+                            <section class="docs-intro">
+                                <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>No questions have been asked yet...</h5>
+                                <p>...so I can&#39;t give answers.</p>
+                            </section><!--//docs-intro-->
+                        </header>
+                    
+                    </article><!--//docs-article-->
+
+                    <footer class="footer">
+                        <div class="container text-center py-5">
+                            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+                            <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small><br>
+                            <small class="copyright">Icon made by <a class="theme-link" href="https://www.flaticon.com/authors/becris" target="_blank">Becris</a> from <a class="theme-link" href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></small>
+                            <ul class="social-list list-unstyled pt-4 mb-0">
+                                <li class="list-inline-item"><a href="https://github.com/jarnoeetsoep/sound-editor"><i class="fab fa-github fa-fw"></i></a></li> 
+                            </ul><!--//social-list-->
+                        </div>
+                    </footer>
+                </div> 
+            </div>
+        </div><!--//docs-wrapper-->
+        
+        <!-- Javascript -->          
+        <script src="assets/plugins/jquery-3.4.1.min.js"></script>
+        <script src="assets/plugins/popper.min.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+        
+        <!-- Page Specific JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+        <script src="assets/js/highlight-custom.js"></script> 
+        <script src="assets/plugins/jquery.scrollTo.min.js"></script>
+        <script src="assets/js/docs.js"></script> 
+    </body>
 </html> 
-
