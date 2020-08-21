@@ -65,9 +65,9 @@ class Application(tk.Frame):
         self.menu.add_cascade(label=self.configuration.getLang()['topmenu']['edit'], menu=self.menu_edit)
 
         self.menu_edit.add_command(label=self.configuration.getLang()['topmenu']['undo'], accelerator='Ctrl+Z', command=self.undo)
-        self.master.bind_all('<Control-z>', self.help)
+        self.master.bind_all('<Control-z>', self.undo)
         self.menu_edit.add_command(label=self.configuration.getLang()['topmenu']['redo'], accelerator='Ctrl+Y', command=self.redo)
-        self.master.bind_all('<Control-y>', self.help)
+        self.master.bind_all('<Control-y>', self.redo)
         
         self.menu_help = tk.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label=self.configuration.getLang()['topmenu']['help'], menu=self.menu_help)
@@ -143,7 +143,7 @@ class Application(tk.Frame):
             ffmpeg = run(['ffmpeg', '-y', '-loglevel', 'error', '-i', os.path.realpath(os.path.dirname(__file__) + '/tmp/current.wav'), self.current_file['path']], stdout=PIPE, stderr=STDOUT)
 
             if ffmpeg.returncode == 1:
-                messagebox.showerror('Error', f'Could not save file to \'{path}\':\n\n{ffmpeg.stdout.decode()}')
+                messagebox.showerror('Error', f'Could not save file to \'{self.current_file["path"]}\':\n\n{ffmpeg.stdout.decode()}')
                 return
                 
             self.master.wm_title(f'Sound Editor - {os.path.basename(self.current_file["path"])}')
