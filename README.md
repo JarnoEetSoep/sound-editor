@@ -1,4 +1,4 @@
-# Python 3 Sound Editor 0.1.0+3.7.4
+# Python 3 Sound Editor 0.1.0+3.8.5
 For a more detailed documentation please visit https://jarnoeetsoep.github.io/sound-editor.
 
 ## What is this?
@@ -9,7 +9,7 @@ Using this application, you will be able to edit your audio files.
 #### Prerequisites
 program | url
 ------- | ---
-Python 3(.7.4) | https://www.python.org/downloads/
+Python 3(.8.5) | https://www.python.org/downloads/
 FFMmeg | https://ffmpeg.org/download.html
 
 #### Download
